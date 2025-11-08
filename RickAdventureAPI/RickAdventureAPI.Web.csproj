@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\RickAdventureAPI.Data.csproj" />
+    <ProjectReference Include="..\RickAdventureAPI.Data\RickAdventureAPI.Data.csproj" />
     <ProjectReference Include="..\RickAdventureAPI.Logica\RickAdventureAPI.Logica.csproj" />
   </ItemGroup>
 

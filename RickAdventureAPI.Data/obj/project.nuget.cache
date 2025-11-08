@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/BKAXbGquCA=",
+  "dgSpecHash": "VhYEf0RdoTE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\RickAdventureAPI.Data.csproj",
+  "projectFilePath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\RickAdventureAPI.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nico\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Nico\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

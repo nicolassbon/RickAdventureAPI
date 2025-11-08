@@ -2805,8 +2805,8 @@
     },
     "RickAdventureAPI.Data/1.0.0": {
       "type": "project",
-      "path": "../Entidades/RickAdventureAPI.Data.csproj",
-      "msbuildProject": "../Entidades/RickAdventureAPI.Data.csproj"
+      "path": "../RickAdventureAPI.Data/RickAdventureAPI.Data.csproj",
+      "msbuildProject": "../RickAdventureAPI.Data/RickAdventureAPI.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2846,8 +2846,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\RickAdventureAPI.Data.csproj": {
-              "projectPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\RickAdventureAPI.Data.csproj"
+            "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\RickAdventureAPI.Data.csproj": {
+              "projectPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\RickAdventureAPI.Data.csproj"
             }
           }
         }

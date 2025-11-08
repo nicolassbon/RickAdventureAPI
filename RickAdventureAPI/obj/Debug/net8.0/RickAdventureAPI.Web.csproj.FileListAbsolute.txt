@@ -173,3 +173,4 @@ C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI\obj\De
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI\obj\Debug\net8.0\RickAdventureAPI.Web.pdb
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI\obj\Debug\net8.0\RickAdventureAPI.Web.genruntimeconfig.cache
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI\obj\Debug\net8.0\ref\RickAdventureAPI.Web.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI\obj\Debug\net8.0\RickAdventureAPI.Web.sourcelink.json

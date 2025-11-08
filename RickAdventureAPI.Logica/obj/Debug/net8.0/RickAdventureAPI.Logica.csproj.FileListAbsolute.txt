@@ -13,3 +13,4 @@ C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\refint\RickAdventureAPI.Logica.dll
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.pdb
 C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\ref\RickAdventureAPI.Logica.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.sourcelink.json

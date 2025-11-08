@@ -4728,11 +4728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\RickAdventureAPI.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\RickAdventureAPI.Data.csproj",
       "projectName": "RickAdventureAPI.Data",
-      "projectPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\RickAdventureAPI.Data.csproj",
+      "projectPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\RickAdventureAPI.Data.csproj",
       "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\Entidades\\obj\\",
+      "outputPath": "C:\\Users\\Nico\\Documents\\Desarrollo\\.NET\\RickAdventureAPI\\RickAdventureAPI.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
