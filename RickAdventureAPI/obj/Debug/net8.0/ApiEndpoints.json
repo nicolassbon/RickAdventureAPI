@@ -1,0 +1,74 @@
+[
+  {
+    "ContainingType": "RickAdventureAPI.Web.Controllers.JugadorController",
+    "Method": "CrearJugador",
+    "RelativePath": "api/Jugador",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "RickAdventureAPI.Web.Models.Request.JugadorRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAdventureAPI.Web.Models.Responses.JugadorResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAdventureAPI.Web.Controllers.JugadorController",
+    "Method": "ObtenerRankingJugadores",
+    "RelativePath": "api/Jugador/ranking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RickAdventureAPI.Web.Models.Responses.RankingResponse, RickAdventureAPI.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAdventureAPI.Web.Controllers.PartidaController",
+    "Method": "GuardarPartida",
+    "RelativePath": "api/Partida",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "RickAdventureAPI.Web.Models.Request.PartidaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAdventureAPI.Web.Models.Responses.PartidaResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

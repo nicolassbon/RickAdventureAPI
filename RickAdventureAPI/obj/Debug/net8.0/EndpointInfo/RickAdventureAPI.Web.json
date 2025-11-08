@@ -1,0 +1,243 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "RickAdventureAPI.Web",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Jugador": {
+      "post": {
+        "tags": [
+          "Jugador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JugadorRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JugadorRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/JugadorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JugadorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JugadorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JugadorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Jugador/ranking": {
+      "get": {
+        "tags": [
+          "Jugador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RankingResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RankingResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RankingResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Partida": {
+      "post": {
+        "tags": [
+          "Partida"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartidaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartidaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartidaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "JugadorRequest": {
+        "type": "object",
+        "properties": {
+          "nombreJugador": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JugadorResponse": {
+        "type": "object",
+        "properties": {
+          "idJugador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreJugador": {
+            "type": "string",
+            "nullable": true
+          },
+          "puntajeTotal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nivelMaximoAlcanzado": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartidaRequest": {
+        "type": "object",
+        "properties": {
+          "idJugador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idNivel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "puntaje": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "completado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartidaResponse": {
+        "type": "object",
+        "properties": {
+          "exito": {
+            "type": "boolean"
+          },
+          "mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "nuevoPuntajeTotal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nivelDesbloqueado": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RankingResponse": {
+        "type": "object",
+        "properties": {
+          "posicion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreJugador": {
+            "type": "string",
+            "nullable": true
+          },
+          "puntajeTotal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nivelMaximoAlcanzado": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

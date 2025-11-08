@@ -1,0 +1,15 @@
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\bin\Debug\net8.0\RickAdventureAPI.Logica.deps.json
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\bin\Debug\net8.0\RickAdventureAPI.Logica.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\bin\Debug\net8.0\RickAdventureAPI.Logica.pdb
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\bin\Debug\net8.0\RickAdventureAPI.Data.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\bin\Debug\net8.0\RickAdventureAPI.Data.pdb
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.csproj.AssemblyReference.cache
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.AssemblyInfoInputs.cache
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.AssemblyInfo.cs
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.csproj.CoreCompileInputs.cache
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdve.26237B00.Up2Date
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\refint\RickAdventureAPI.Logica.dll
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\RickAdventureAPI.Logica.pdb
+C:\Users\Nico\Documents\Desarrollo\.NET\RickAdventureAPI\RickAdventureAPI.Logica\obj\Debug\net8.0\ref\RickAdventureAPI.Logica.dll
