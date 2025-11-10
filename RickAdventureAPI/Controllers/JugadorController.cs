@@ -16,34 +16,40 @@ public class JugadorController : ControllerBase
         _jugadorLogica = jugadorLogica;
     }
 
-    /// Crear nuevo jugador (inicio de juego)
+    /// <summary>
+    /// Crear o buscar jugador (inicio de juego)
+    /// Si el nombre existe, devuelve el jugador existente.
+    /// Si no existe, crea uno nuevo.
+    /// </summary>
     [HttpPost]
-    public async Task<ActionResult<JugadorResponse>> CrearJugador([FromBody] JugadorRequest request)
+    public async Task<ActionResult<JugadorResponse>> CrearOBuscarJugador([FromBody] JugadorRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.NombreJugador))
         {
             return BadRequest("El nombre del jugador es obligatorio.");
         }
 
-        var nuevoJugador = await _jugadorLogica.CrearJugador(request.NombreJugador);
-        
+        var jugador = await _jugadorLogica.CrearOBuscarJugador(request.NombreJugador);
+
         var response = new JugadorResponse
         {
-            IdJugador = nuevoJugador.IdJugador,
-            NombreJugador = nuevoJugador.NombreJugador,
-            PuntajeTotal = nuevoJugador.PuntajeTotal ?? 0,
-            NivelMaximoAlcanzado = nuevoJugador.NivelMaximoAlcanzado ?? 1
+            IdJugador = jugador.IdJugador,
+            NombreJugador = jugador.NombreJugador,
+            PuntajeTotal = jugador.PuntajeTotal ?? 0,
+            NivelMaximoAlcanzado = jugador.NivelMaximoAlcanzado ?? 1
         };
 
         return Ok(response);
     }
 
+    /// <summary>
     /// Obtener top 10 jugadores (ranking)
+    /// </summary>
     [HttpGet("ranking")]
     public async Task<ActionResult<IEnumerable<RankingResponse>>> ObtenerRankingJugadores()
     {
         var jugadores = await _jugadorLogica.ObtenerRankingJugadores();
-        
+
         var ranking = jugadores.Select((jugador, index) => new RankingResponse
         {
             Posicion = index + 1,

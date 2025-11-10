@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "RickAdventureAPI.Web.Controllers.JugadorController",
-    "Method": "CrearJugador",
+    "Method": "CrearOBuscarJugador",
     "RelativePath": "api/Jugador",
     "HttpMethod": "POST",
     "IsController": true,

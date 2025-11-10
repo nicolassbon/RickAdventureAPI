@@ -6,7 +6,7 @@ namespace RickAdventureAPI.Logica;
 
 public interface IJugadorLogica
 {
-    Task<Jugador> CrearJugador(string nombre);
+    Task<Jugador> CrearOBuscarJugador(string nombre);
     Task<List<Jugador>> ObtenerRankingJugadores();
     Task ActualizarProgresoJugador(int id, int puntaje, int nivel);
 }
@@ -20,8 +20,16 @@ public class JugadorLogica : IJugadorLogica
         _context = context;
     }
 
-    public async Task<Jugador> CrearJugador(string nombre)
+    public async Task<Jugador> CrearOBuscarJugador(string nombre)
     {
+        var jugadorExistente = await _context.Jugadores
+            .FirstOrDefaultAsync(j => j.NombreJugador.ToLower() == nombre.ToLower());
+
+        if (jugadorExistente != null)
+        {
+            return jugadorExistente;
+        }
+
         var nuevoJugador = new Jugador
         {
             NombreJugador = nombre,
@@ -29,10 +37,10 @@ public class JugadorLogica : IJugadorLogica
             NivelMaximoAlcanzado = 1,
             FechaCreacion = DateTime.Now
         };
-        
+
         _context.Jugadores.Add(nuevoJugador);
         await _context.SaveChangesAsync();
-        
+
         return nuevoJugador;
     }
 
@@ -48,16 +56,16 @@ public class JugadorLogica : IJugadorLogica
     public async Task ActualizarProgresoJugador(int id, int puntaje, int nivel)
     {
         var jugador = await _context.Jugadores.FindAsync(id);
-        
+
         if (jugador != null)
         {
             jugador.PuntajeTotal = (jugador.PuntajeTotal ?? 0) + puntaje;
-            
+
             if (nivel > (jugador.NivelMaximoAlcanzado ?? 0))
             {
                 jugador.NivelMaximoAlcanzado = nivel;
             }
-            
+
             await _context.SaveChangesAsync();
         }
     }

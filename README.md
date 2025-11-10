@@ -7,7 +7,7 @@ API REST para gestionar progreso de jugadores en un juego Unity de 3 niveles.
 ## 📖 ¿Qué hace esta API?
 
 Esta API es el **backend** de un juego de Unity. Solo se encarga de:
-1. ✅ Registrar jugadores
+1. ✅ Crear o buscar jugadores
 2. ✅ Guardar resultados de partidas
 3. ✅ Mostrar ranking (top 10)
 
@@ -17,12 +17,13 @@ Esta API es el **backend** de un juego de Unity. Solo se encarga de:
 
 ## 🔄 Flujo Unity ↔ API (Paso a Paso)
 
-### **1️⃣ Inicio del Juego (Crear Jugador)**
+### **1️⃣ Inicio del Juego (Crear o Buscar Jugador)**
 ```
 Unity: Usuario ingresa su nombre → "Rick"
 Unity: POST /api/jugador {"nombreJugador": "Rick"}
-API:   Responde con {idJugador: 5, puntajeTotal: 0, nivelMaximoAlcanzado: 1}
-Unity: Guarda idJugador=5 en PlayerPrefs para usarlo después
+API:   - Si el nombre existe → Devuelve el jugador con su progreso
+       - Si no existe → Crea un nuevo jugador
+       Responde {idJugador: 1, nombreJugador: "Rick", puntajeTotal: 0, nivelMaximoAlcanzado: 1}
 ```
 
 ### **2️⃣ Jugando (Todo en Unity)**
@@ -34,7 +35,7 @@ Unity: El jugador juega el nivel 1 (todo pasa en Unity)
 
 ### **3️⃣ Termina el Nivel (Guardar Partida)**
 ```
-Unity: POST /api/partida {idJugador: 5, idNivel: 1, puntaje: 350, completado: true}
+Unity: POST /api/partida {idJugador: 1, idNivel: 1, puntaje: 350, completado: true}
 API:   - Guarda la partida en la BD
        - Suma 350 al puntaje total del jugador
        - Si completado=true → Desbloquea nivel 2
@@ -55,7 +56,7 @@ Unity: Muestra la tabla de ranking en pantalla
 
 | Método | Endpoint | Descripción | Cuándo llamarlo |
 |--------|----------|-------------|----------------|
-| `POST` | `/api/jugador` | Crear jugador | Al iniciar el juego |
+| `POST` | `/api/jugador` | Crear o buscar jugador | Al iniciar el juego |
 | `POST` | `/api/partida` | Guardar resultado | Al terminar cada nivel |
 | `GET` | `/api/jugador/ranking` | Ver top 10 | En pantalla de ranking |
 
@@ -63,7 +64,7 @@ Unity: Muestra la tabla de ranking en pantalla
 
 ## 📦 Request/Response (Ejemplos)
 
-### **POST /api/jugador** (Crear Jugador)
+### **POST /api/jugador** (Crear o Buscar Jugador)
 **Request:**
 ```json
 POST http://localhost:5000/api/jugador
@@ -73,16 +74,26 @@ Content-Type: application/json
   "nombreJugador": "Rick"
 }
 ```
-**Response:**
+
+**Response (Primera vez - Jugador nuevo):**
 ```json
 {
-  "idJugador": 5,
+  "idJugador": 1,
   "nombreJugador": "Rick",
   "puntajeTotal": 0,
   "nivelMaximoAlcanzado": 1
 }
 ```
-**⚠️ Importante:** Guarda `idJugador` en Unity (PlayerPrefs) para usarlo en las siguientes llamadas.
+
+**Response (Ya existe - Con progreso):**
+```json
+{
+  "idJugador": 1,
+  "nombreJugador": "Rick",
+  "puntajeTotal": 850,
+  "nivelMaximoAlcanzado": 2
+}
+```
 
 ---
 
@@ -93,7 +104,7 @@ POST http://localhost:5000/api/partida
 Content-Type: application/json
 
 {
-  "idJugador": 5,
+  "idJugador": 1,
   "idNivel": 1,
   "puntaje": 350,
   "completado": true
@@ -112,7 +123,7 @@ Content-Type: application/json
 **Si el jugador NO completa el nivel:**
 ```json
 {
-  "idJugador": 5,
+  "idJugador": 1,
   "idNivel": 2,
   "puntaje": 150,
   "completado": false
@@ -163,61 +174,7 @@ GET http://localhost:5000/api/jugador/ranking
 
 ## 🎯 Integración con Unity (Código C# para Unity)
 
-### **1. Crear Jugador (Script en Unity)**
-```csharp
-using UnityEngine;
-using UnityEngine.Networking;
-using System.Collections;
-
-[System.Serializable]
-public class JugadorRequest
-{
-    public string nombreJugador;
-}
-
-[System.Serializable]
-public class JugadorResponse
-{
-    public int idJugador;
-    public string nombreJugador;
-    public int puntajeTotal;
-    public int nivelMaximoAlcanzado;
-}
-
-public class APIManager : MonoBehaviour
-{
-    private const string API_URL = "http://localhost:5000/api";
-    
-    public IEnumerator CrearJugador(string nombre)
-    {
-        JugadorRequest request = new JugadorRequest { nombreJugador = nombre };
-        string jsonData = JsonUtility.ToJson(request);
-        
-        using (UnityWebRequest www = UnityWebRequest.Post($"{API_URL}/jugador", jsonData, "application/json"))
-        {
-            yield return www.SendWebRequest();
-            
-            if (www.result == UnityWebRequest.Result.Success)
-            {
-                JugadorResponse response = JsonUtility.FromJson<JugadorResponse>(www.downloadHandler.text);
-                
-                // Guardar idJugador en PlayerPrefs
-                PlayerPrefs.SetInt("idJugador", response.idJugador);
-                PlayerPrefs.SetString("nombreJugador", response.nombreJugador);
-                PlayerPrefs.Save();
-                
-                Debug.Log($"Jugador creado: {response.nombreJugador} (ID: {response.idJugador})");
-            }
-            else
-            {
-                Debug.LogError($"Error: {www.error}");
-            }
-        }
-    }
-}
-```
-
-### **2. Guardar Partida (Al terminar nivel)**
+### **1. Guardar Partida (Al terminar nivel)**
 ```csharp
 [System.Serializable]
 public class PartidaRequest
@@ -275,52 +232,7 @@ public IEnumerator GuardarPartida(int idNivel, int puntaje, bool completado)
 }
 ```
 
-### **3. Obtener Ranking**
-```csharp
-[System.Serializable]
-public class RankingResponse
-{
-    public int posicion;
-    public string nombreJugador;
-    public int puntajeTotal;
-    public int nivelMaximoAlcanzado;
-}
-
-[System.Serializable]
-public class RankingListWrapper
-{
-    public RankingResponse[] items;
-}
-
-public IEnumerator ObtenerRanking()
-{
-    using (UnityWebRequest www = UnityWebRequest.Get($"{API_URL}/jugador/ranking"))
-    {
-        yield return www.SendWebRequest();
-        
-        if (www.result == UnityWebRequest.Result.Success)
-        {
-            // Unity JsonUtility no soporta arrays directamente, usar wrapper
-            string json = "{\"items\":" + www.downloadHandler.text + "}";
-            RankingListWrapper wrapper = JsonUtility.FromJson<RankingListWrapper>(json);
-            
-            foreach (var jugador in wrapper.items)
-            {
-                Debug.Log($"{jugador.posicion}. {jugador.nombreJugador} - {jugador.puntajeTotal} pts");
-            }
-            
-            // Mostrar ranking en UI
-            // MostrarRanking(wrapper.items);
-        }
-        else
-        {
-            Debug.LogError($"Error: {www.error}");
-        }
-    }
-}
-```
-
-### **4. Ejemplo de uso en Unity**
+### **2. Ejemplo de uso en Unity**
 ```csharp
 public class GameManager : MonoBehaviour
 {
@@ -334,7 +246,7 @@ public class GameManager : MonoBehaviour
     // Llamar al iniciar el juego
     public void IniciarJuego(string nombreJugador)
     {
-        StartCoroutine(apiManager.CrearJugador(nombreJugador));
+        StartCoroutine(apiManager.IniciarJuego(nombreJugador));
     }
     
     // Llamar al terminar un nivel

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RickAdventureAPI.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3331f0de135a321eeb5ab758a54260159fdfa16")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68a65bd2d7aec58a0f6cf62e94be2ffc4ef0af0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("RickAdventureAPI.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RickAdventureAPI.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
